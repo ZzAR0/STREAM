@@ -3,7 +3,7 @@
 This repository contains the code for the paper "Beyond Pixels: Mining Compressed Domain Artifacts for Efffcient AI-Generated Video Detection" (accepted at ICMl 2026).
 
 <p align="center">
-  <img src="fig/framework4.png" width="90%">
+  <img src="fig/framework4.png" width="100%">
 </p>
 
 ## Overview
