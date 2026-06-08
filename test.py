@@ -1,5 +1,3 @@
-"""Test CoViAR baselines or STREAM and optionally save score npz."""
-
 import argparse
 import csv
 import os
