@@ -1,5 +1,3 @@
-"""Train CoViAR baselines or the STREAM fusion model."""
-
 import os
 import time
 import numpy as np
