@@ -1,18 +1,3 @@
-"""
-Compressed-video dataset for CoViAR baselines and STREAM.
-
-For ``representation='stream'`` each sample returns:
-    {
-        'iframe':   Tensor[T, 3, H, W],
-        'residual': Tensor[T, 3, H, W],
-        'mv':       Tensor[T, 2, H, W],
-    }, label
-
-The three modalities are sampled at matching predictive-frame positions. The
-I-frame is loaded from the same GOP as the residual/MV frame so the model can
-motion-warp I-frame features toward each predictive frame.
-"""
-
 import os
 import os.path
 import random
