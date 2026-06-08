@@ -1,16 +1,3 @@
-"""Model definitions for CoViAR baselines and STREAM.
-
-The ``stream`` representation implements the paper-style compressed-domain
-fusion:
-
-    F_align(t) = Warp(F_iframe, MV(t))
-    G(t)       = sigmoid(Conv1x1([F_res(t), F_align(t)]))
-    F_fused(t) = G(t) * F_res(t) + (1 - G(t)) * F_align(t)
-
-Motion vectors are used as a displacement field only; they are not classified
-by a separate branch.
-"""
-
 import os
 
 os.environ.setdefault("TORCH_HOME", os.path.join(os.path.dirname(__file__), ".torch"))
@@ -157,26 +144,9 @@ class StreamFusionModel(nn.Module):
         return x.view((-1,) + x.size()[-3:]).contiguous()
 
     def _decode_mv_to_pixels(self, mv):
-        """Convert normalized dataset MV tensor back to approximate pixels.
-
-        Dataset MV normalization is:
-            raw_mv -> clip_and_scale(raw_mv, mv_clip) + 128 -> /255 - 0.5
-        so the inverse is:
-            raw_mv ~= (((mv + 0.5) * 255) - 128) * mv_clip / 127.5
-        """
         return (((mv + 0.5) * 255.0) - 128.0) * (self.mv_clip / 127.5)
 
     def warp_features(self, features, mv, input_hw):
-        """Warp iframe feature maps with motion vectors.
-
-        Args:
-            features: [N, C, Hf, Wf] iframe feature map.
-            mv: [N, 2, Hi, Wi] normalized MV tensor.
-            input_hw: spatial size of the original MV/image tensor.
-
-        Returns:
-            [N, C, Hf, Wf] motion-aligned iframe features.
-        """
         n, _, hf, wf = features.shape
         hi, wi = input_hw
         flow = self._decode_mv_to_pixels(mv)
