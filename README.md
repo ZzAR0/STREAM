@@ -77,3 +77,16 @@ The test script reports accuracy and class-wise metrics, and can optionally save
 ## Acknowledgements
 
 This repository benefits from the public implementations and data-loading utilities released by CoViAR and related compressed-domain video recognition projects.
+
+## Citation
+
+If you find this repository useful, please consider citing our paper:
+
+```bibtex
+@inproceedings{zhu2026stream,
+  title     = {Beyond Pixels: Mining Compressed Domain Artifacts for Efficient AI-Generated Video Detection},
+  author    = {Zhu, Anran and Shi, Zhengli and Zheng, Chende and Lin, Chenhao and Zhao, Zhengyu and Yang, Le and Zhang, Chong and Liu, Shuai and Shen, Chao},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026}
+}
+```
